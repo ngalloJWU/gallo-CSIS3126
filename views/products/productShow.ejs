@@ -1,0 +1,8 @@
+<h1><%=product.productTitle%></h1>
+<h2>Price: <%=product.productPrice%></h2>
+<h3>Description</h3>
+<p><%=product.productDescription%></p>
+<div>
+    <a href='/products/<%=product._id%>/edit'><button>Edit</button></a>
+    <form method='POST' action='/products/<%=product._id%>?_method=DELETE'><button>Delete</button></form>
+</div>

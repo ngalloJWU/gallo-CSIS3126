@@ -1,0 +1,8 @@
+.homeProduct img{
+    max-width: 80%;
+}
+
+.homeProduct a{
+    text-decoration: none;
+    color:black;
+}

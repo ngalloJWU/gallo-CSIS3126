@@ -7,11 +7,10 @@ const productSchema= new Schema({
     productDescription:String,
     productPrice:String,
     category:String,
-    // expireAt:{
-    //     type:Date,
-    //     default: Date.now,
-    //     expires:300
-    // },
+    expireAt:{
+         type:Date,
+         expires:Date.now()+1
+     },
     created: {type:Date, default:Date.now()},
     image:{type:String,default:'tempProduct.jpg'}
 })

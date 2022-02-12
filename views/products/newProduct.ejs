@@ -1,42 +1,36 @@
 <% layout('/partials/boilerplate')%>
-<form class='w-50' action='/products' method="POST">
-    <div class="mb-3 d-flex flex-column">
-        <label for="productTitle" class="form-label">Product Title</label>
-        <input type='text' id=productTitle name='productTitle'>
-    </div>
-    <div class="mb-3 d-flex flex-column">
-        <label for="productDescription" class="form-label">Description</label>
-        <textarea id=productDescription name='productDescription' rows="5" col='50'></textarea>
-    </div>
-    <div class="mb-3 d-flex flex-column w-25">
-        <label for="productPrice" class="form-label">Price</label>
-        <input type='number' id=productPrice name='productPrice'>
-    </div>
-    <div class="mb-3 d-flex flex-column">
-        <label for="category" class="form-label">Category</label>
-        <select class="form-select" aria-label="Default select example" id="category" name="category" required>
-            <option value="Electronics/Media">Electronics/Media</option>
-            <option selected value="Home/Garden">Home/Garden</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Baby/Kids">Baby/Kids</option>
-            <option value="Vehicles">Vehicles</option>
-            <option value="Toys/Games">Toys/Games</option>
-            <option value="Sports/Outdoors">Sports/Outdoors</option>
-            <option value="Collectables">Collectables</option>
-            <option value="Pet">Pet</option>
-            <option value="Health/Beauty">Health/Beauty</option>
-            <option value="Equipment">Equipment</option>
-            <option value="General">General</option>
-            <option value="Other">Other</option>
-        </select>
-    </div>
-    <div class="mb-3 d-flex flex-column">
-        <label for="expiration" class="form-label">Expiration</label>
-        <select class="form-select" aria-label="Default select example" id="expiration" name="expiration" required>
-            <option value="10">7 Days</option>
-            <option selected value="14d">14 Days</option>
-            <option value="30d">30 Days</option>
-        </select>
-    </div>
-    <button>Submit</button>
-</form>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <form class='w-50' action='/products' method="POST">
+        <div class="mb-3 d-flex flex-column">
+            <label for="productTitle" class="form-label">Product Title</label>
+            <input type='text' id=productTitle name='productTitle'>
+        </div>
+        <div class="mb-3 d-flex flex-column w-25">
+            <label for="productPrice" class="form-label">Price</label>
+            <input type='number' id=productPrice name='productPrice'>
+        </div>
+        <div class="mb-3 d-flex flex-column">
+            <label for="productDescription" class="form-label">Description</label>
+            <textarea id=productDescription name='productDescription' rows="5" col='50'></textarea>
+        </div>
+        <div class="mb-3 d-flex flex-column">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" aria-label="Default select example" id="category" name="category" required>
+                <option value="Electronics_Media">Electronics & Media</option>
+                <option selected value="Home_Garden">Home & Garden</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Baby_Kids">Baby & Kids</option>
+                <option value="Vehicles">Vehicles</option>
+                <option value="Toys_Games">Toys & Games</option>
+                <option value="Sports_Outdoors">Sports & Outdoors</option>
+                <option value="Collectables">Collectables</option>
+                <option value="Pet">Pet</option>
+                <option value="Health_Beauty">Health & Beauty</option>
+                <option value="Equipment">Equipment</option>
+                <option value="General">General</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-outline-success w-100 m-2">Post Product</button>
+    </form>
+</div>

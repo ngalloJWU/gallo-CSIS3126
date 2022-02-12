@@ -1,15 +1,17 @@
 <nav class="navbar sticky-top navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">NicksList</a>
-      <form class="d-flex w-75">
-        <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="d-flex w-75">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" id="searchVal">
+        <button class="btn btn-outline-success" type="submit" id="searchBtn">Search</button>
+      </div>
     </div>
     <%const categoryArr=['Electronics/Media','Home/Garden','Clothing',"Baby/Kids","Vehicles","Toys/Games","Sports/Outdoors","Collectables","Pet","Health/Beauty","Equipment","General","Other"]%>
     <div class="container-fluid mt-2">
         <% for(let category of categoryArr){%>
-            <a><%=category%></a>
+            <%var catLink=category%>
+            <% if (category.includes('/')){catLink=category.replace('/','_')}%>
+            <a href="/products/sort?category=<%=catLink%>"><%=category%></a>
         <%}%>
     </div>
 </nav>

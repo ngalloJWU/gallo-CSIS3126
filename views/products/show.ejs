@@ -3,7 +3,7 @@
     <div class="row">
         <%for(let product of products){%>
             <div class="col-3 homeProduct">
-                <a href="/products/<%=product._id%>">
+                <a href="/products/<%=product._id%>/show">
                     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
                         <h1><%=product.productTitle%></h1>
                         <img class ="align-self-center" src="/<%=product.image%>">

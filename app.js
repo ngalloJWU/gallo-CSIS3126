@@ -9,8 +9,17 @@ const path = require('path')
 const ejsMate=require('ejs-mate')
 const mongoose =require('mongoose');
 const Product = require('./models/product');
+const Category = require('./models/categories')
 const { urlencoded } = require('express');
+const {validateProduct}=require('./utilities/validateProduct')
 const methodOverride = require('method-override')
+const morgan = require('morgan');
+const catchAsync = require('./utilities/catchAsync');
+const ExpressError = require('./utilities/ExpressError');
+const Joi = require('joi')
+const session = require('express-session');
+const flash=require('connect-flash');
+
 
 //Connecting MongoDB Database
 mongoose.connect('mongodb://localhost:27017/NicksList',{
@@ -30,6 +39,19 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
 app.use(express.static(__dirname + 'public'));
 app.use(express.static('./public'))
+app.use(flash())
+
+app.use(session(
+    {secret:'tempSecret',
+    resave:'false',
+    saveUninitialized:'true',
+    cookie:{
+        httpOnly:true,
+        expires:Date.now()+1000*60*60*24*7
+    }
+}))
+
+app.use(morgan('tiny'))
 
 app.use(methodOverride('_method'))
 
@@ -48,30 +70,37 @@ const seedDB=async()=>{
     }
 }
 
+app.use((req,res,next)=>{
+    res.locals.success=req.flash('success')
+    res.locals.error=req.flash('error')
+    next()
+})
 
 //Routes
-app.get('/',async(req,res)=>{
+app.get('/',catchAsync(async(req,res)=>{
     const products = await Product.find({}).limit(20)
     res.render('home',{products});
-})
+}))
 
 app.get('/products/new',async(req,res)=>{
-    res.render('products/newProduct')
+    const categories = await Category.find({})
+    console.log(categories)
+    res.render('products/newProduct',{categories})
 })
 
-app.get('/products',async(req,res)=>{
+app.get('/products',catchAsync(async(req,res)=>{
     const products=await Product.find({});
     res.render('products/show',{products})
-})
+}))
 
-app.get('/products/:id/show',async(req,res)=>{
+app.get('/products/:id/show',catchAsync(async(req,res)=>{
     console.log(req.params.id)
     const product = await Product.findById(req.params.id);
     res.render('products/productShow',{product})
-})
+}))
 
 
-app.get('/products/sort',async(req,res)=>{
+app.get('/products/sort',catchAsync(async(req,res)=>{
     var products
     console.log(req.query)
     if(req.query.category){
@@ -84,29 +113,39 @@ app.get('/products/sort',async(req,res)=>{
 
     //console.log(products)
     res.render('products/show',{products})
-})
+}))
 
-app.get('/products/:id/edit',async(req,res)=>{
+app.get('/products/:id/edit',catchAsync(async(req,res)=>{
     const product = await Product.findById(req.params.id);
     res.render('products/edit',{product})
-})
+}))
 
-app.put('/products/:id/show',async(req,res)=>{
+app.put('/products/:id/show',catchAsync(async(req,res)=>{
     const product=await Product.findByIdAndUpdate(req.params.id,req.body)
     console.log(product)
     await product.save();
     res.redirect(`/products/${req.params.id}`)
-})
+}))
 
-app.post('/products',async(req,res)=>{
+app.post('/products',validateProduct,catchAsync(async(req,res)=>{
     var product = await new Product(req.body)
     product.save();
-    res.redirect('/')
-})
+    req.flash('success','Product Successfully Posted')
+    res.redirect(`/products/${product._id}/show`)
+}))
 
-app.delete('/products/:id/show',async(req,res)=>{
+app.delete('/products/:id/show',catchAsync(async(req,res)=>{
     const product = await Product.findByIdAndDelete(req.params.id)
     res.redirect('/products')
+}))
+
+app.all('*',(req,res,next)=>{
+    next(new ExpressError('Page not Found',404));
+})
+
+app.use((err,req,res,next)=>{
+    const {statusCode = 500,message='Oops! Something Went Wrong'} = err;
+    res.render('error',{statusCode,message});
 })
 
 app.listen(3000,()=>{

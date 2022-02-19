@@ -3,34 +3,49 @@
     <form class='w-50' action='/products' method="POST">
         <div class="mb-3 d-flex flex-column">
             <label for="productTitle" class="form-label">Product Title</label>
-            <input type='text' id=productTitle name='productTitle'>
+            <input type='text' id=productTitle name='productTitle' required>
         </div>
         <div class="mb-3 d-flex flex-column w-25">
             <label for="productPrice" class="form-label">Price</label>
-            <input type='number' id=productPrice name='productPrice'>
+            <input type='number' step='0.01' id=productPrice name='productPrice' required>
         </div>
         <div class="mb-3 d-flex flex-column">
             <label for="productDescription" class="form-label">Description</label>
-            <textarea id=productDescription name='productDescription' rows="5" col='50'></textarea>
+            <textarea id=productDescription name='productDescription' rows="5" col='50' required></textarea>
         </div>
         <div class="mb-3 d-flex flex-column">
             <label for="category" class="form-label">Category</label>
             <select class="form-select" aria-label="Default select example" id="category" name="category" required>
-                <option value="Electronics_Media">Electronics & Media</option>
-                <option selected value="Home_Garden">Home & Garden</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Baby_Kids">Baby & Kids</option>
-                <option value="Vehicles">Vehicles</option>
-                <option value="Toys_Games">Toys & Games</option>
-                <option value="Sports_Outdoors">Sports & Outdoors</option>
-                <option value="Collectables">Collectables</option>
-                <option value="Pet">Pet</option>
-                <option value="Health_Beauty">Health & Beauty</option>
-                <option value="Equipment">Equipment</option>
-                <option value="General">General</option>
-                <option value="Other">Other</option>
+                <%for (let category of categories){%>
+                    <% const title = category.categoryName.replace('_'," & ")%>
+                    <option value="<%=category.categoryName%>"><%=title%></option>
+                <%}%>
             </select>
         </div>
-        <button type="button" class="btn btn-outline-success w-100 m-2">Post Product</button>
+        <button class="btn btn-outline-success w-100 m-2">Post Product</button>
     </form>
+    <script>
+        //Taken from Bootstrap v5.0 Docs
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+    </script>
 </div>

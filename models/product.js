@@ -7,12 +7,17 @@ const productSchema= new Schema({
     productDescription:String,
     productPrice:String,
     category:String,
-    expireAt:{
-         type:Date,
-         expires:Date.now()+1
-     },
-    created: {type:Date, default:Date.now()},
-    image:{type:String,default:'tempProduct.jpg'}
-})
+    lat:String,
+    long:String,
+    locationName:String,
+    author:{
+        type:Schema.Types.ObjectId,
+        ref:'User'
+    },
+    savedBy:Array,
+    images:{type:Array,default:['tempProduct.jpg']}
+},{timestamps: true});
+
+productSchema.index({createdAt: 1},{expireAfterSeconds: 2592000})
 
 module.exports=mongoose.model('Product',productSchema)

@@ -1,6 +1,9 @@
 <% layout('/partials/boilerplate')%>
 <div class="d-flex flex-column justify-content-center align-items-center">
-    <form class='w-50' action='/products' method="POST">
+    <form class='w-50' action='/products' method="POST" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile01" name="image" multiple>
+        </div>
         <div class="mb-3 d-flex flex-column">
             <label for="productTitle" class="form-label">Product Title</label>
             <input type='text' id=productTitle name='productTitle' required>
@@ -8,6 +11,10 @@
         <div class="mb-3 d-flex flex-column w-25">
             <label for="productPrice" class="form-label">Price</label>
             <input type='number' step='0.01' id=productPrice name='productPrice' required>
+        </div>
+        <div class="mb-3 d-flex flex-column w-25">
+            <label for="zip" class="form-label">Zipcode</label>
+            <input type='number' id=zip name='zip' required>
         </div>
         <div class="mb-3 d-flex flex-column">
             <label for="productDescription" class="form-label">Description</label>

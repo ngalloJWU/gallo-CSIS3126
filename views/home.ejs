@@ -5,12 +5,14 @@
 <div class='container mt-3'>
     <div class="row">
         <%for(let product of products){%>
-            <div class="col-3 homeProduct">
+            <div class="col-2 homeProduct">
                 <a href="/products/<%=product._id%>/show">
                     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-                        <h1><%=product.productTitle%></h1>
-                        <img class ="align-self-center" src="<%=product.image%>">
-                        <h1><%=product.productPrice%></h1>
+                        <img class ="align-self-center productImg" src="<%=product.images[0].url%>">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <p style="font-size: 18px"><b><%=product.productTitle%></b></p>
+                            <p style="font-size: 20px;">$<%=product.productPrice%></p>
+                        </div>
                     </div>
                 </a>
             </div>

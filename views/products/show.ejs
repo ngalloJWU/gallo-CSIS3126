@@ -1,13 +1,18 @@
 <% layout('/partials/boilerplate')%>
+<div class="d-flex flex-row">
+    <p>Sort:</p>
+    <a>Price</a>
+    <a>Date</a>
+</div>
 <div class='container mt-3'>
     <div class="row">
         <%for(let product of products){%>
             <div class="col-3 homeProduct">
                 <a href="/products/<%=product._id%>/show">
                     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-                        <h1><%=product.productTitle%></h1>
-                        <img class ="align-self-center" src="/<%=product.image%>">
-                        <h1><%=product.productPrice%></h1>
+                        <img class ="align-self-center productImg" src="<%=product.images[0].url%>">
+                        <p style="font-size: 18px"><%=product.productTitle%></p>
+                        <p style="font-size: 20px"><%=product.productPrice%></p>
                     </div>
                 </a>
             </div>

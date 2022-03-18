@@ -1,0 +1,58 @@
+<script>
+    //Taken from Mapbox Doc
+    mapboxgl.accessToken = 'pk.eyJ1Ijoibmlja2dhbGxvMjAwMSIsImEiOiJjbDBvZzhjMzExNGQ2M2N0a3UxODdtdWFwIn0.knAV-XLzazZUGDKAQTi__A';
+    
+    const lat = <%=product.lat%>
+    const long = <%=product.long%>
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [lat, long],
+      zoom: 9
+    });
+    
+    map.on('load', function () {
+        map.loadImage(
+        'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+        (error, image) => {
+            if (error) throw error;
+            map.addImage('custom-marker', image);
+            // Add a GeoJSON source with 2 points
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            // feature for Mapbox DC
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [
+                                    lat, long
+                                ]
+                            },
+                        },
+                    ]
+                }
+        });
+        map.addLayer({
+                'id': 'points',
+                'type': 'symbol',
+                'source': 'points',
+                'layout': {
+                    'icon-image': 'custom-marker',
+                    // get the title name from the source's "title" property
+                    'text-field': ['get', 'title'],
+                    'text-font': [
+                        'Open Sans Semibold',
+                        'Arial Unicode MS Bold'
+                    ],
+                    'text-offset': [0, 1.25],
+                    'text-anchor': 'top'
+                }
+            });
+    })
+})
+    
+</script>

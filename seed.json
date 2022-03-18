@@ -1,0 +1,91 @@
+{
+    "products":[
+        {
+            "productTitle":"N64, 1 Controller",
+            "productDescription":"N64 with 1 controller...no games 120.00 obo",
+            "productPrice":120,
+            "author":"6231295de6eff1bdd36d8695",
+            "images":[
+                {
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647628030/Products/ImageUpload/1.1_sze6hk.jpg",
+                    "filename":"Products/ImageUpload/1.1_sze6hk"
+                },{
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647628029/Products/ImageUpload/1.2_cznnqv.jpg",
+                    "filename":"Products/ImageUpload/1.2_cznnqv" 
+                }
+            ]
+        },
+        {
+            "productTitle":"PC Gaming GTX 980 Ti 6gb 16 RAM",
+            "productDescription":"",
+            "productPrice":800,
+            "author":"6231295de6eff1bdd36d8695",
+            "images":[
+                {
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647628886/Products/ImageUpload/a538e9cc130b4d9694524227ad439a0b_h6mgjd.jpg",
+                    "filename":"Products/ImageUpload/a538e9cc130b4d9694524227ad439a0b_h6mgjd"
+                },{
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647628930/Products/ImageUpload/b4e9adfddde84e23ac4a879ce717c4ae_rkyn2w.jpg",
+                    "filename":"Products/ImageUpload/b4e9adfddde84e23ac4a879ce717c4ae_rkyn2w" 
+                }
+            ]
+        },
+        {
+            "productTitle":"Logitech Z506 Speakers",
+            "productDescription":"Looking to sell my surround speakers used them on my computer. Looking to get 80$ or best offer!",
+            "productPrice":80,
+            "author":"6231295de6eff1bdd36d8695",
+            "images":[
+                {
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647629113/Products/ImageUpload/04ba7b256e534fa5b2fb4007fe8aea43_jll45s.jpg",
+                    "filename":"Products/ImageUpload/04ba7b256e534fa5b2fb4007fe8aea43_jll45s"
+                },{
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647629165/Products/ImageUpload/8d8cfae274e04f90bc0ebcf80c1362f8_twjque.jpg",
+                    "filename":"Products/ImageUpload/8d8cfae274e04f90bc0ebcf80c1362f8_twjque" 
+                }
+            ]
+        },
+        {
+            "productTitle":"Unlocked iPhone 11 Pro 64GB Gold",
+            "productDescription":"Unlocked iPhone 11 Pro Gold 64GB. We offer financing, no credit check & only $25 down. Phone Hub 1279 N. Main Street Providence RI 02904",
+            "productPrice":479,
+            "author":"6231295de6eff1bdd36d8695",
+            "images":[
+                {
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647629355/Products/ImageUpload/eac00ce31882416a8ea140e09dae45f1_gq6h0n.jpg",
+                    "filename":"Products/ImageUpload/eac00ce31882416a8ea140e09dae45f1_gq6h0n"
+                }
+            ]
+        },
+        {
+            "productTitle":"Mouse",
+            "productDescription":"Like new works just fine",
+            "productPrice":25,
+            "author":"6231295de6eff1bdd36d8695",
+            "images":[
+                {
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647629622/Products/ImageUpload/eb1de63d4cbf49b68e87ed91a0f0cbae_svjr3x.jpg",
+                    "filename":"Products/ImageUpload/eb1de63d4cbf49b68e87ed91a0f0cbae_svjr3x"
+                },{
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647629720/Products/ImageUpload/312eb5b65ac4419bb81bd52b42b50cfc_zdmmcx.jpg",
+                    "filename":"Products/ImageUpload/312eb5b65ac4419bb81bd52b42b50cfc_zdmmcx" 
+                }
+            ]
+        },
+        {
+            "productTitle":"Nintendo Switch",
+            "productDescription":"Practically brand new Nintendo switch. Comes with all accessories, two games, an SD card and a carrying case.",
+            "productPrice":320,
+            "author":"6231295de6eff1bdd36d8695",
+            "images":[
+                {
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647630079/Products/ImageUpload/6dd780d7f82a4dde86c173f13e74d74a_xkjity.jpg",
+                    "filename":"Products/ImageUpload/6dd780d7f82a4dde86c173f13e74d74a_xkjity"
+                },{
+                    "url":"https://res.cloudinary.com/djwqkgnob/image/upload/v1647630233/Products/ImageUpload/794a559a09f54eb1988b6a8360d6eecd_bw3gkr.jpg",
+                    "filename":"Products/ImageUpload/794a559a09f54eb1988b6a8360d6eecd_bw3gkr" 
+                }
+            ]
+        }
+    ]
+}

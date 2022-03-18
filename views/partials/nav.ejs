@@ -5,6 +5,20 @@
         <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" id="searchVal">
         <button class="btn btn-outline-success" type="submit" id="searchBtn">Search</button>
       </div>
+        <% if(currentUser){%>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black">
+              <%=currentUser.username%>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/account">My Account</a></li>
+              <li><a class="dropdown-item" href="">Messages</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        <%}else{%>
+          <a href="/login" class="me-2">Login</a>
+        <% } %> 
     </div>
     <%const categoryArr=['Electronics/Media','Home/Garden','Clothing',"Baby/Kids","Vehicles","Toys/Games","Sports/Outdoors","Collectables","Pet","Health/Beauty","Equipment","General","Other"]%>
     <div class="container-fluid mt-2">

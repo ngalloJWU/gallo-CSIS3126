@@ -1,0 +1,36 @@
+<% layout('/partials/boilerplate')%>
+<div class="d-flex flex-column m-5">
+    <div class="d-flex flex-row">
+        <div class="w-25">Picture</div>
+        <div class="d-flex flex-column w-75">
+            <h1><%=currentUser.username%></h1>
+            <br>
+            <h3><%=currentUser.myZip%></h3>
+            <p>Preferred Contact: <%=currentUser.preferredContact%></p>
+            <button class="btn btn-outline-success w-25" id="edit">Edit</button>
+        </div>
+    </div>
+    <div class="mt-5">
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-column">
+                <p>My Lisitings</p>
+                <p>Saved</p>
+                <p>Messages</p>
+            </div>
+            <div class='container mt-3'>
+                <div class="row justify-content-center align-items-center">
+                    <%for(let product of userListings){%>
+                        <div class="col-2 homeProduct m-2">
+                            <a href="/products/<%=product._id%>/show">
+                                <div class="d-flex flex-column justify-content-center align-items-center mb-3">
+                                    <img class ="align-self-center productImg" src="<%=product.images[0].url%>">
+                                    <p><%=product.productTitle%></p>
+                                </div>
+                            </a>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

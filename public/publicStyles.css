@@ -13,3 +13,17 @@ a{
     text-decoration:none;
     color:black;
 }
+
+.invis{
+    display:none;
+}
+
+.carousel-item {
+    overflow: hidden;
+    height: 500px;
+    width: 500px;
+}
+.carousel-item img {
+    overflow: hidden;
+    width: 500px;
+}

@@ -3,15 +3,15 @@
     <form class='w-50' action='/login' method="POST">
         <h1 class="align-text-center w-100">Login</h1>
         <div class="mb-3 d-flex flex-column">
-            <label for="username" class="form-label">Email</label>
+            <label for="username" class="form-label">Username (Case Sensitive)</label>
             <input type='text' id=username name='username'>
         </div>
         <div class="mb-3 d-flex flex-column">
             <label for="password" class="form-label">Password</label>
             <input type='password' id=password name='password'></input>
         </div>
-        <p>Register</p>
-        <p>Forgot Password</p>
+        <p><a href="/register">Register</a></p>
+        <p><a href="/reset">Forgot Password</a></p>
         <button class="btn btn-outline-success w-100" type="submit">Login</button>
     </form>
 </div>

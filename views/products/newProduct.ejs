@@ -1,8 +1,10 @@
 <% layout('/partials/boilerplate')%>
 <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="display-1">Create a Product</h1>
     <form class='w-50' action='/products' method="POST" enctype="multipart/form-data">
+        <p>Choose Photos</p>
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile01" name="image" multiple>
+            <input type="file" class="form-control" id="inputGroupFile01" name="image" accept="image/png, image/jpeg" multiple required>
         </div>
         <div class="mb-3 d-flex flex-column">
             <label for="productTitle" class="form-label">Product Title</label>

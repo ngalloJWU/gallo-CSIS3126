@@ -24,6 +24,9 @@ const UserSchema = new Schema({
         type:Schema.Types.ObjectId,
         ref:'Product'
     }],
+    profilePhoto:{
+        type:Object
+    },
     isAdmin:{
         type:Boolean,
         default:false

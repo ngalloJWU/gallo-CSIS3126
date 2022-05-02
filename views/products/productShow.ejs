@@ -1,10 +1,28 @@
 <% layout('/partials/boilerplate')%>
 <div class="d-flex flex-column m-5">
     <div class="d-flex">
-        <div>
-            <img style="width:500px; height: 500px;"src="<%=product.images[0].url%>">
+        <div class="d-flex justify-content-center align-items-center">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <%product.images.forEach((img,i)=>{%>
+                        <div class="carousel-item <%= i===0?'active':''%>">
+                            <img src="<%=img.showThumb%>" class="d-block w-100" alt="...">
+                        </div>
+                    <%})%>
+                </div>
+                <%if(product.images.length>1){%>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                <%}%>
+              </div>
         </div>
-        <div class="d-flex flex-column m-3 w-75">
+        <div class="d-flex flex-column ms-3 w-75">
             <h1><%=product.productTitle%>
                 <%if(currentUser){%>
                     <%if(product.savedBy.includes(currentUser._id)){%>
@@ -15,11 +33,28 @@
                 <% } %> 
             </h1>
             <h2>$<%=product.productPrice%></h2>
+            <i><%=distance%> Miles Away</i>
             <p><%=product.locationName%></p>
             <i>Posted by: <%=product.author.username%></i>
+            <i><%=Math.floor((today-product.createdAt)/(1000*3600*24))%> Days Ago</i>
+            <% if (currentUser && currentUser._id.equals(product.author._id)){%>
+                <div class="d-flex flex-row">
+                    <a href="/products/<%=product._id%>/edit"><button type="button" class="btn btn-outline-primary m-2">Edit</button></a>
+                    <form action='/products/<%=product._id%>/show?_method=DELETE' method="POST">
+                        <button class="btn btn-outline-danger m-2">Delete</button>
+                    </form>
+                </div>
+            <%}%>
             <div id="map" style='width: 100%; height: 300px;'></div>
             <div class="d-flex w-100">
-                <button type="button" class="btn btn-outline-success w-100 m-2">Interested</button>
+                <div class="dropdown w-100">
+                    <button class="btn btn-outline-success dropdown-toggle w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Interested
+                    </button>
+                    <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
+                        <p class="m-4">Interested? Contact Me at <%if(product.author.preferredContact=='Phone'){%><%=product.author.phone%><%}else{%><%=product.author.email%><%}%></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -27,12 +62,13 @@
     <p><%=product.productDescription%></p>
     <br>
     <h2>Related Items</h2>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row justify-content-center align-items-center">
         <%for(let relProduct of relatedProducts){%>
             <a href="/products/<%=relProduct._id%>/show">
-                <div class="d-flex flex-column align-items-center m-3">
-                    <img class="productImg"src="<%=relProduct.images[0].url%>">
-                    <p><%=relProduct.productTitle%></p> 
+                <div class="d-flex flex-column justify-content-center align-items-center m-3">
+                    <img class="productImg" src="<%=relProduct.images[0].thumb%>">
+                    <p class="mb-0"><b><%=relProduct.productTitle.substring(0,20)%></b></p> 
+                    <p class="m-0">$<%=relProduct.productPrice%></p>
                 </div>
             </a>
         <%}%>

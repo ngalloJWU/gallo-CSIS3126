@@ -1,24 +1,46 @@
 <nav class="navbar sticky-top navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">NicksList</a>
-      <div class="d-flex w-75">
+      <div class="d-flex w-50">
         <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" id="searchVal">
         <button class="btn btn-outline-success" type="submit" id="searchBtn">Search</button>
       </div>
-        <% if(currentUser){%>
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black">
-              <%=currentUser.username%>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="/account">My Account</a></li>
-              <li><a class="dropdown-item" href="">Messages</a></li>
-              <li><a class="dropdown-item" href="/logout">Logout</a></li>
-            </ul>
-          </div>
-        <%}else{%>
-          <a href="/login" class="me-2">Login</a>
-        <% } %> 
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black">
+          <b><%=location.zip%></b>
+        </a>
+        <ul class="dropdown-menu justify-content-left" aria-labelledby="navbarDropdownMenuLink">
+          <form action='/' method="POST" class="m-3">
+            <div class="d-flex flex-column">
+              <label for="setLoc" class="form-label">Location</label>
+              <input type='text' id=setLoc name='setLoc' placeholder="Zipcode"required>
+            </div>
+            <div class="d-flex flex-column">
+              <label for="maxDis" class="form-label">Max. Distance</label>
+              <input type='text' id=maxDis name='maxDis' placeholder = "Miles" required>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <button class="d-flex align-items-center btn btn-outline-success w-100 m-2">Update Location</button>
+            </div>
+          </form>
+        </ul>
+      </div>
+      <div class="d-flex justify-content-right">
+          <% if(currentUser){%>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black">
+                <%=currentUser.username%>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="/account">My Account</a></li>
+                <li><a class="dropdown-item" href="/products/new">Make Listing</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </div>
+          <%}else{%>
+            <a href="/login" class="me-2">Login</a>
+          <% } %> 
+      </div>
     </div>
     <%const categoryArr=['Electronics/Media','Home/Garden','Clothing',"Baby/Kids","Vehicles","Toys/Games","Sports/Outdoors","Collectables","Pet","Health/Beauty","Equipment","General","Other"]%>
     <div class="container-fluid mt-2">

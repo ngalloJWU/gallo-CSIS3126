@@ -7,11 +7,12 @@
         <%for(let product of products){%>
             <div class="col-2 homeProduct">
                 <a href="/products/<%=product._id%>/show">
-                    <div class="d-flex flex-column justify-content-center align-items-center mb-3">
+                    <div class="d-flex flex-column justify-content-left align-items-left mb-3">
                         <img class ="align-self-center productImg" src="<%=product.images[0].url%>">
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            <p style="font-size: 18px"><b><%=product.productTitle%></b></p>
-                            <p style="font-size: 20px;">$<%=product.productPrice%></p>
+                        <div class="d-flex flex-column justify-content-center align-items-left">
+                            <p class="mb-0" style="font-size: 18px"><b><%=product.productTitle.substring(0,19)%></b></p>
+                            <p class ="mb-0 d-flex flex-column align-items-left"style="font-size: 20px;">$<%=product.productPrice%></p>
+                            <i><%=Math.floor((today-product.createdAt)/(1000*3600*24))%> Days Ago</i>
                         </div>
                     </div>
                 </a>

@@ -1,0 +1,43 @@
+<% layout('/partials/boilerplate')%>
+<div class="containter d-flex flex-column align-items-center">
+    <div class="w-30 d-flex flex-column align-items-center">
+        <h1>Reset Password</h1>
+        <p class='text-muted'>Enter new password below</p>
+        <form action="/reset/<%=tokenId%>" method="POST" class="w-100">
+            <div class="form-group">
+                <input class ="form-control mb-2" type="password" name="password" placeholder="Password">
+                <div id="passwordRequirments" class="text-muted">
+                    <p class='m-0'><u>Password must contain:</u></p>
+                    <%if (passwordErr.includes('passwordComplexity.tooShort')){%>
+                        <p class="m-0 text-danger">8 or more characters</p>
+                    <%}else{%>
+                        <p class="m-0">8 or more characters</p>
+                    <%}%>
+
+                    <%if (passwordErr.includes('passwordComplexity.uppercase')){%>
+                        <p class="m-0 text-danger">Atleast 1 uppercase character(A-Z)</p>
+                    <%}else{%>
+                        <p class="m-0">Atleast 1 uppercase character(A-Z)</p>
+                    <%}%>
+                    <%if (passwordErr.includes('passwordComplexity.lowercase')){%>
+                        <p class="m-0 text-danger">Atleast 1 lowercase character(a-z)</p>
+                    <%}else{%>
+                        <p class="m-0">Atleast 1 lowercase character(a-z)</p>
+                    <%}%>
+                    <%if (passwordErr.includes('passwordComplexity.numeric')){%>
+                        <p class="m-0 text-danger">Atleast 1 number (1-9)</p>
+                    <%}else{%>
+                        <p class="m-0">Atleast 1 number (1-9)</p>
+                    <%}%>
+                    <%if (passwordErr.includes('passwordComplexity.symbol')){%>
+                        <p class="m-0 text-danger">Atleast 1 special character</p>
+                    <%}else{%>
+                        <p class="m-0">Atleast 1 special character</p>
+                    <%}%>
+                </div>
+                <input class="form-control mb-2" type="password" name="confirmPassword" placeholder="Confirm Password">
+            </div>
+            <button class="btn btn-outline-dark mt-2 w-100">Change Password</button>
+        </form>
+    </div>
+</div>

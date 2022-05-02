@@ -1,21 +1,45 @@
 <% layout('/partials/boilerplate')%>
-<div class="d-flex flex-row">
-    <p>Sort:</p>
-    <a>Price</a>
-    <a>Date</a>
+<div class="d-flex justify-content-center align-items-center">
+    <h1 class="display-1"><%if(categoryName.length>0){%><%=categoryName%><%}%></h1>
+</div>
+<div class="d-flex w-100 justify-content-center align-items-center">
+    <div class="dropdown w-100">
+        <button class="btn btn-outline-success dropdown-toggle w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="<%=url%>factor=1">Price: High to Low</a></li>
+            <li><a class="dropdown-item" href="<%=url%>factor=0">Price: Low to High</a></li>
+            <li><a class="dropdown-item" href="<%=url%>factor=2">Newest</a></li>
+            <li><a class="dropdown-item" href="<%=url%>factor=3">Oldest</a></li>
+        </ul>
+    </div>
 </div>
 <div class='container mt-3'>
     <div class="row">
         <%for(let product of products){%>
             <div class="col-3 homeProduct">
                 <a href="/products/<%=product._id%>/show">
-                    <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-                        <img class ="align-self-center productImg" src="<%=product.images[0].url%>">
-                        <p style="font-size: 18px"><%=product.productTitle%></p>
-                        <p style="font-size: 20px"><%=product.productPrice%></p>
+                    <div class="d-flex flex-column justify-content-left align-items-left mb-3">
+                        <img class ="align-self-center productImg" src="<%=product.images[0].thumb%>">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <p class="mb-0" style="font-size: 18px"><b><%=product.productTitle.substring(0,19)%></b></p>
+                            <p class ="mb-0 d-flex flex-column align-items-left"style="font-size: 20px;">$<%=product.productPrice%></p>
+                            <i><%=Math.floor((today-product.createdAt)/(1000*3600*24))%> Days Ago</i>
+                        </div>
                     </div>
                 </a>
             </div>
         <%}%>
     </div>
+    <% if(totalPages>1){%>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <%if(page-1>=1){%>
+                <a href="<%=url%>page=<%=page-1%>"><p class="m-1"style="font-size:24px">&lt;&lt;Prev</p></a>
+            <%}%>
+            <%if (page+1<=totalPages){%>
+                <a href="<%=url%>page=<%=page+1%>"><p class="m-1"style="font-size:24px">Next>></p></a>
+            <%}%>
+        </div>
+    <%}%>
 </div>

@@ -1,0 +1,15 @@
+<% layout('/partials/boilerplate')%>
+<div class="containter d-flex flex-column align-items-center">
+    <div class="w-30 d-flex flex-column align-items-center">
+        <h1>Reset Password</h1>
+        <p class='text-muted'>Please provide the email address and username associated with your account</p>
+        <form action="/reset" method="POST" class="w-100">
+            <div class="form-group">
+                <input class ="form-control" type="email" name="email" placeholder="Email">
+                <input class ="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <button class="btn btn-outline-dark mt-2 w-100">Send Email</button>
+        </form>
+        <p class = 'text-muted'>Not a member? <a href='/register' class='text-muted'>Sign Up</a></p>
+    </div>
+</div>

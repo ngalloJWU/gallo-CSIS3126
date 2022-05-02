@@ -14,5 +14,12 @@ const productStorage=new CloudinaryStorage({
         allowedFormats:['png','jpg','jpeg']
     }
 });
+const accountStorage=new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder:'Accounts',
+        allowedFormats:['png','jpg','jpeg']
+    }
+});
 
-module.exports={cloudinary,productStorage};
+module.exports={cloudinary,productStorage,accountStorage};
